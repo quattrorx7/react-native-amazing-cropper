@@ -685,24 +685,24 @@ class CropperPage extends Component<CropperPageProps, State> {
       size: { width, height },
       resizeMode: 'stretch',
     } as ImageCropData;
-    RNImageRotate.rotateImage(
-      this.props.imageUri,
-      this.state.rotation,
-      (rotatedUri: string) => {
-        //
-        ImageEditor.cropImage(rotatedUri, cropData)
-          .then(croppedUri => {
-            this.props.onDone(croppedUri);
-          })
-          .catch((err: Error) => {
-            this.props.onError(err);
-          });
-        //
-      },
-      (err: Error) => {
-        this.props.onError(err);
-      },
-    );
+    // RNImageRotate.rotateImage(
+    //   this.props.imageUri,
+    //   this.state.rotation,
+    //   (rotatedUri: string) => {
+    //     //
+    //     ImageEditor.cropImage(rotatedUri, cropData)
+    //       .then(croppedUri => {
+    //         this.props.onDone(croppedUri);
+    //       })
+    //       .catch((err: Error) => {
+    //         this.props.onError(err);
+    //       });
+    //     //
+    //   },
+    //   (err: Error) => {
+    //     this.props.onError(err);
+    //   },
+    // );
   };
 
   render() {
@@ -740,10 +740,10 @@ class CropperPage extends Component<CropperPageProps, State> {
         bottomRightPanResponder={this.state.bottomRightPanResponder}
         topRightPanResponder={this.state.topRightPanResponder}
         rectanglePanResponder={this.state.rectanglePanResponder}
-        topOuterRef={ref => (this.topOuter = ref)}
-        leftOuterRef={ref => (this.leftOuter = ref)}
-        bottomOuterRef={ref => (this.bottomOuter = ref)}
-        rightOuterRef={ref => (this.rightOuter = ref)}
+        topOuterRef={(ref) => (this.topOuter = ref)}
+        leftOuterRef={(ref) => (this.leftOuter = ref)}
+        bottomOuterRef={(ref) => (this.bottomOuter = ref)}
+        rightOuterRef={(ref) => (this.rightOuter = ref)}
         COMPONENT_WIDTH={this.props.COMPONENT_WIDTH}
         COMPONENT_HEIGHT={this.props.COMPONENT_HEIGHT}
         W={this.W}
